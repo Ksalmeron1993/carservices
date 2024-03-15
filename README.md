@@ -1,9 +1,8 @@
-# CarCar
+# Car Services
 
-Team:
-
-* Person 1 - Which microservice?
-* Person 2 - Which microservice?
+microservice/poller. 
+RESTful API, poller, and React components for Service. 
+RESTful API, poller, and React components for Sales.
 
 ## Design
 
