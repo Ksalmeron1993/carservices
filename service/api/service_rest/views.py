@@ -50,7 +50,7 @@ def technician_detail(request, pk):
         return JsonResponse({'success': 'Technician deleted'}, status=204)
 
 @require_http_methods(["GET", "POST"])
-def api_list_appointment(request):
+def api_list_appointments(request):
     if request.method == "GET":
         return JsonResponse(list(Appointment.objects.all().values()), safe=False)
     elif request.method == "POST":
