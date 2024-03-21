@@ -27,11 +27,3 @@ class Appointment(models.Model):
 
     def __str__(self):
         return self.customer_name
-
-
-class AutoVO(models.Model):
-    vin_number = models.CharField(max_length=200, unique=True)
-    import_url = models.CharField(max_length=200, unique=True)
-    
-    def __str__(self):
-        return self.vin_number

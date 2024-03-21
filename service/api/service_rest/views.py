@@ -1,26 +1,16 @@
-from common.json import ModelEncoder
-from django.shortcuts import render
-from .models import Technician, Appointment, AutoVO
+from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from django.http import JsonResponse
-# Create your views here.
 
-class AutoVOEncoder(ModelEncoder):
-    model = AutoVO
-    properties = ['vin_number', 'import_url', 'id']
+from .encoders import (
+    TechnicianEncoder,
+    AppointmentEncoder,
+)
 
-class TechnicianEncoder(ModelEncoder):
-    model = Technician
-    properties = ['name', 'employee_number', 'id']
-
-class AppointmentEncoder(ModelEncoder):
-    model = Appointment
-    properties = ['date', 'time', 
-                  'customer_name', 'customer_phone', 
-                  'customer_email', 'technician', 'id']
+from .models import Technician, Appointment
 
 
+#views
 @require_http_methods(["GET", "POST"])
 def technician_list(request):
     if request.method == "GET":
@@ -29,7 +19,6 @@ def technician_list(request):
         data = json.loads(request.body)
         technician = Technician.objects.create(name=data['name'], employee_number=data['employee_number'])
         return JsonResponse(TechnicianEncoder().default(technician), safe=False)
-
 
 @require_http_methods(["GET", "PUT", "DELETE"])
 def technician_detail(request, pk):
@@ -63,7 +52,6 @@ def api_list_appointments(request):
                                                  technician=technician)
         return JsonResponse(AppointmentEncoder().default(appointment), safe=False)
     
-
 @require_http_methods(["GET", "PUT", "DELETE"])
 def api_detail_appointment(request, pk):
     try:

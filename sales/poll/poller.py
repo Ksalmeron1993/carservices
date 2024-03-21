@@ -9,7 +9,7 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
-from api.sales_rest.models import AutomobileVO
+from sales.api.sales_rest.models import AutomobileVO
 
 def get_automobile():
     response = requests.get("http://automobile-api:8000/api/automobiles/")
