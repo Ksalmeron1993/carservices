@@ -5,7 +5,7 @@ from .models import AutomobileVO, SalesPerson, Customer, Sale
 # Register your models here.
 @admin.register(AutomobileVO)
 class AutomobileVOAdmin(admin.ModelAdmin):
-    list_display = ('make', 'model', 'year', 'color', 'vin', 'import_href')
+    list_display = ('make', 'model', 'year', 'color', 'vin', )
 
 
 @admin.register(SalesPerson)

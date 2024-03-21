@@ -2,7 +2,7 @@ from common.json import ModelEncoder
 
 from .models import AutomobileVO, SalesPerson, Customer, Sale
 
-class AutomobileEncoder(ModelEncoder):
+class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
         "vin",
@@ -42,7 +42,7 @@ class SaleEncoder(ModelEncoder):
         "sale_date",
     ]
     encoders = {
-        "automobile": AutomobileEncoder(),
+        "automobile": AutomobileVOEncoder(),
         "sales_person": SalesPersonEncoder(),
         "customer": CustomerEncoder(),
     }

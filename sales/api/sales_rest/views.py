@@ -3,6 +3,7 @@ from django.views.decorators.http import require_http_methods
 import json
 
 from .encoders import (
+    AutomobileVOEncoder,
     SalesPersonEncoder,
     CustomerEncoder,
     SaleEncoder,
@@ -10,6 +11,36 @@ from .encoders import (
 from .models import AutomobileVO,SalesPerson, Customer, Sale
 
 # views
+@require_http_methods(["GET", "POST"])
+def automobile_list(request):
+    if request.method == "GET":
+        return JsonResponse(list(AutomobileVO.objects.all().values()), safe=False)
+    elif request.method == "POST":
+        data = json.loads(request.body)
+        automobile = AutomobileVO.objects.create(make=data['make'], model=data['model'], year=data['year'], color=data['color'], vin=data['vin'])
+        return JsonResponse(AutomobileVOEncoder().default(automobile), safe=False)
+
+@require_http_methods(["GET", "PUT", "DELETE"])
+def automobile_detail(request, pk):
+    try:
+        automobile = AutomobileVO.objects.get(pk=pk)
+    except AutomobileVO.DoesNotExist:
+        return JsonResponse({'error': 'Automobile does not exist'}, status=404)
+    if request.method == "GET":
+        return JsonResponse(AutomobileVOEncoder().default(automobile), safe=False)
+    elif request.method == "PUT":
+        data = json.loads(request.body)
+        automobile.make = data['make']
+        automobile.model = data['model']
+        automobile.year = data['year']
+        automobile.color = data['color']
+        automobile.vin = data['vin']
+        automobile.save()
+        return JsonResponse(AutomobileVOEncoder().default(automobile), safe=False)
+    elif request.method == "DELETE":
+        automobile.delete()
+        return JsonResponse({'success': 'Automobile deleted'}, status=204)
+
 @require_http_methods(["GET", "POST"])
 def salesperson_list(request):
     if request.method == "GET":

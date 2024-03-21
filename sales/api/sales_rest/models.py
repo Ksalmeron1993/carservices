@@ -38,7 +38,7 @@ class Customer(models.Model):
         return reverse("customer-detail", kwargs={"pk": self.pk})
 
 class Sale(models.Model):
-    automobile = models.ForeignKey(Automobile, related_name="sales", on_delete=models.CASCADE)
+    automobile = models.ForeignKey(AutomobileVO, related_name="sales", on_delete=models.CASCADE, null=True, blank=True)
     sales_person = models.ForeignKey(SalesPerson, related_name="sales", on_delete=models.CASCADE,null=True, blank=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     sale_price = models.DecimalField(max_digits=10, decimal_places=2)
