@@ -1,6 +1,8 @@
 from django.urls import path
 
 from .views import (
+    automobile_list,
+    automobile_detail,
     salesperson_list,
     salesperson_detail,
     customer_list,
@@ -10,6 +12,16 @@ from .views import (
 )
 
 urlpatterns = [
+    path(
+        "automobiles/",
+        automobile_list,
+        name="api_automobiles",
+    ),
+    path(
+        "automobiles/<int:pk>/",
+        automobile_detail,
+        name="api_automobile",
+    ),
     path(
         "salespeople/",
         salesperson_list,
