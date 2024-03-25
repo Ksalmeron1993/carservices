@@ -9,10 +9,10 @@ sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sales_project.settings")
 django.setup()
 
-from sales.api.sales_rest.models import AutomobileVO
+from sales_rest.models import AutomobileVO
 
 def get_automobile():
-    response = requests.get("http://automobile-api:8000/api/automobiles/")
+    response = requests.get("http://automobile-api:8100/api/automobiles/")
     content = json.loads(response.content)
     for auto in content["autos"]:
         AutomobileVO.objects.update_or_create(
