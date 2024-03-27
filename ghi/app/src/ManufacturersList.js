@@ -22,7 +22,7 @@ return(
     <table className="table table-striped align-middle mt-5">
         <thead>
             <tr>
-                <th>Manufacturer</th>
+                <th>Manufacturers</th>
             </tr>
         </thead>
         <tbody>

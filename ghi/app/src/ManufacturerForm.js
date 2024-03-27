@@ -29,9 +29,7 @@ function ManufacturerForm () {
           console.log("Error: invalid manufacturer name");
           setInvalid(true);
         }
-            
-            
-        };
+      };
     return (
         <div className="row">
         <div className="offset-3 col-6">
@@ -45,7 +43,7 @@ function ManufacturerForm () {
               <button className="btn btn-primary">Create</button>
             </form>
             {invalid && (<div className='alert alert-danger mb-0 p-4 mt-4' id="success-message"> This is an invalid or already taken manufacturer name, please try again. </div>)}
-            {invalid && submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new manufacturer! </div>)}
+            {submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new manufacturer! </div>)}
           </div>
         </div>
       </div>    
