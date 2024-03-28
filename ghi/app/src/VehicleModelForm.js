@@ -82,8 +82,8 @@ function VehicleModelForm() {
                             <button className="btn btn-primary">Create</button>
                         </div>
                     </form>
-                    {invalid && (<div className='alert alert-danger mb-0 p-4 mt-4' id="success-message"> This is an invalid or already taken manufacturer name, please try again. </div>)}
-            {submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new manufacturer! </div>)}
+                    {invalid && (<div className='alert alert-danger mb-0 p-4 mt-4' id="success-message"> This is an invalid or already taken model name, please try again. </div>)}
+            {submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new model! </div>)}
                 </div>
             </div>
         </div>

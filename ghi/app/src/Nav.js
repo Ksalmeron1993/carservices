@@ -40,6 +40,11 @@ function Nav() {
                 Register a New Technician
               </NavLink>
             </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link active" to="appointments/">
+                Create an Appointment
+              </NavLink>
+            </li>
 
           </ul>
         </div>
