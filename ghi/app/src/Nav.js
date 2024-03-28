@@ -35,6 +35,11 @@ function Nav() {
                 Vehicle Models List
               </NavLink>
             </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link active" to="technicians/">
+                Register a New Technician
+              </NavLink>
+            </li>
 
           </ul>
         </div>
