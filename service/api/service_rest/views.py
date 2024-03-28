@@ -31,7 +31,7 @@ def technician_detail(request, pk):
     elif request.method == "PUT":
         data = json.loads(request.body)
         technician.name = data['name']
-        technician.employee_number = data['employee_id']
+        technician.employee_id = data['employee_id']
         technician.save()
         return JsonResponse(TechnicianEncoder().default(technician), safe=False)
     elif request.method == "DELETE":
