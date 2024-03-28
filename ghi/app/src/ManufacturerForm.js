@@ -40,7 +40,7 @@ function ManufacturerForm () {
                 <input onChange={(e) => setManufacturerName(e.target.value)} placeholder="Name" required type="text" name="name" id="name" className="form-control"/>
                 <label htmlFor="name"> Manufacturer Name</label>
               </div>
-              <button className="btn btn-primary">Create</button>
+              <button type="submit" className="btn btn-primary">Create</button>
             </form>
             {invalid && (<div className='alert alert-danger mb-0 p-4 mt-4' id="success-message"> This is an invalid or already taken manufacturer name, please try again. </div>)}
             {submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new manufacturer! </div>)}

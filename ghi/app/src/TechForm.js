@@ -9,9 +9,9 @@ function TechForm () {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const data = { name: techName, id: employeeId};
+        const data = { name: techName, employee_id: employeeId};
 
-        const techUrl = "http://localhost:8100/api/technicians/";
+        const techUrl = "http://localhost:8080/api/technicians/";
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -20,6 +20,8 @@ function TechForm () {
             },
         };
         const response = await fetch(techUrl, fetchConfig);
+        console.log("Response status:", response.status);
+        console.log("Response status text:", response.statusText);
         if(response.ok) {
             event.target.reset();
             setTechName("");
@@ -41,14 +43,18 @@ function TechForm () {
                             <input onChange={(e) => setTechName(e.target.value)} placeholder="name" required type ="text" id="name" className="form-control" />
                             <label htmlFor="name"> Technician Name </label>
                         </div>
-                        <button className="btn btn-primary">Create</button>
+                        <div className="form-floating mb-3">
+                            <input onChange={(e) => setEmployeeId(e.target.value)} placeholder="id" required type ="text" id="id" className="form-control" />
+                            <label htmlFor="id"> Technician Employee Number</label>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Create</button>
                     </form>
                     {invalid && (<div className='alert alert-danger mb-0 p-4 mt-4' id="success-message"> This is an invalid or already taken technician name, please try again. </div>)}
-            {submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new technician! </div>)}
+                    {submitted && (<div className='alert alert-success mb-0 p-4 mt-4' id="success-message"> Successfully created a new technician! </div>)}
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default TechForm;

@@ -17,7 +17,7 @@ def technician_list(request):
         return JsonResponse(list(Technician.objects.all().values()), safe=False)
     elif request.method == "POST":
         data = json.loads(request.body)
-        technician = Technician.objects.create(name=data['name'], employee_number=data['employee_number'])
+        technician = Technician.objects.create(name=data['name'], employee_id=data['employee_id'])
         return JsonResponse(TechnicianEncoder().default(technician), safe=False)
 
 @require_http_methods(["GET", "PUT", "DELETE"])
@@ -31,7 +31,7 @@ def technician_detail(request, pk):
     elif request.method == "PUT":
         data = json.loads(request.body)
         technician.name = data['name']
-        technician.employee_number = data['employee_number']
+        technician.employee_number = data['employee_id']
         technician.save()
         return JsonResponse(TechnicianEncoder().default(technician), safe=False)
     elif request.method == "DELETE":

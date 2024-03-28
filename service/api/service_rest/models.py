@@ -15,7 +15,7 @@ class AutoVO(models.Model):
 
 class Technician(models.Model):
     name = models.CharField(max_length=200)
-    employee_number = models.PositiveBigIntegerField(unique=True)
+    employee_id = models.PositiveBigIntegerField(unique=True)
     
     def get_api_url(self):
         return reverse("api_list_technician", kwargs={"pk": self.id})
