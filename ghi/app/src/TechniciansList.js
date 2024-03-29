@@ -10,14 +10,11 @@ const TechniciansList = () => {
             
             if(response.ok) {
                 const data = await response.json();
-                console.log("Technicians data:", data);
-                setTechnicians(data.technicians);
+                setTechnicians(data);
             }
         };
             fetchTechnicians();
     }, []); 
-
-    console.log("Technicians:", technicians);
 
 return(
     <>
@@ -29,7 +26,7 @@ return(
             </tr>
         </thead>
         <tbody>
-            {technicians?.map((technician) => {
+            {technicians.map((technician) => {
                 return (
                     <tr key={technician.employee_id}>
                         <td>{technician.name}</td>

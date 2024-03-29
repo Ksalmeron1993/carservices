@@ -5,12 +5,11 @@ function AutomobileForm () {
     const[color, setColor] = useState("");
     const[year, setYear] = useState("");
     const[models, setModels] = useState([]);
+    const[selectedModel, setSelectedModel] =useState("");
     const[vin, setVin] = useState("");
     const[sold, setSold] = useState("");
     const [submitted, setSubmitted] = useState(false);
     const[invalid, setInvalid] = useState(false);
-
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -18,7 +17,7 @@ function AutomobileForm () {
         const data ={
             color:color,
             year:year,
-            model:models,
+            model:selectedModel,
             vin:vin,
             sold:sold
         };
@@ -36,9 +35,9 @@ function AutomobileForm () {
             event.target.reset();
             setColor("");
             setYear("");
-            setModels("");
             setVin("");
             setSold("");
+            setSelectedModel("");
             setSubmitted(true);
             setInvalid(false);
         }else{
@@ -54,6 +53,7 @@ function AutomobileForm () {
 
             if (response.ok) {
                 const data = await response.json();
+                console.log("Models data:", data.models);
                 setModels(data.models);
             }
         };
@@ -75,7 +75,7 @@ function AutomobileForm () {
                         <label htmlFor="year">Year</label>
                     </div>
                     <div className="mb-3">
-                        <select onChange={(e) => setModels(e.target.value)} required name="model" id="model" className="form-select" autoComplete="off">
+                        <select onChange={(e) => setSelectedModel(e.target.value)} required name="model" id="model" className="form-select" autoComplete="off">
                             <option value="">Select a model</option>
                             {models?.map((model) => {
                                 return (

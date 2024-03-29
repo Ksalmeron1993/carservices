@@ -61,7 +61,7 @@ function ServiceForm() {
 
       if (response.ok) {
         const data = await response.json();
-        setTechnicians(data.technicians);
+        setTechnicians(data);
       }
     };
     fetchTechnicians();

@@ -16,18 +16,13 @@ function Nav() {
                 </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link active" to="manufacturers/new">
-                Create a Manufacturer
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink className="nav-link active" to="manufacturers/">
                 Manufacturers List
               </NavLink>
             </li>
-            <li className='nav-item'>
-              <NavLink className="nav-link active" to="models/new">
-                Register a Vehicle Model
+            <li className="nav-item">
+              <NavLink className="nav-link active" to="manufacturers/new">
+                Create a Manufacturer
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -36,13 +31,8 @@ function Nav() {
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink className="nav-link active" to="technicians/new">
-                Register a New Technician
-              </NavLink>
-            </li>
-            <li className='nav-item'>
-              <NavLink className="nav-link active" to="appointments/new">
-                Create an Appointment
+              <NavLink className="nav-link active" to="models/new">
+                Register a Vehicle Model
               </NavLink>
             </li>
             <li className='nav-item'>
@@ -55,6 +45,22 @@ function Nav() {
                 Technicians List
               </NavLink>
             </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link active" to="technicians/new">
+                Register a New Technician
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link active" to="appointments/">
+                Appointments List
+              </NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link active" to="appointments/new">
+                Create an Appointment
+              </NavLink>
+            </li>
+
 
           </ul>
         </div>
