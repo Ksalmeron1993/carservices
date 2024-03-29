@@ -12,7 +12,7 @@ from .models import Technician, Appointment
 
 #views
 @require_http_methods(["GET", "POST"])
-def technician_list(request):
+def api_list_technicians(request):
     if request.method == "GET":
         return JsonResponse(list(Technician.objects.all().values()), safe=False)
     elif request.method == "POST":
@@ -21,7 +21,7 @@ def technician_list(request):
         return JsonResponse(TechnicianEncoder().default(technician), safe=False)
 
 @require_http_methods(["GET", "PUT", "DELETE"])
-def technician_detail(request, pk):
+def api_detail_technician(request, pk):
     try:
         technician = Technician.objects.get(pk=pk)
     except Technician.DoesNotExist:

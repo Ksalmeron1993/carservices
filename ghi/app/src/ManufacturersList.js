@@ -10,12 +10,15 @@ const ManufacturersList = () => {
 
             if(response.ok) {
                 const data = await response.json();
+                console.log("manu data:", data);
                 setManufacturerName(data.manufacturers);
             }
 
             };
             fetchManufacturer();
         }, []); 
+
+        console.log("Manus:", manufacturers);
 
 return(
     <>

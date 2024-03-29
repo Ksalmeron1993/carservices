@@ -50,6 +50,11 @@ function Nav() {
                 Register a New Automobile
               </NavLink>
             </li>
+            <li className='nav-item'>
+              <NavLink className="nav-link active" to="technicians/">
+                Technicians List
+              </NavLink>
+            </li>
 
           </ul>
         </div>

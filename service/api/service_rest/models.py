@@ -18,7 +18,7 @@ class Technician(models.Model):
     employee_id = models.PositiveBigIntegerField(unique=True)
     
     def get_api_url(self):
-        return reverse("api_list_technician", kwargs={"pk": self.id})
+        return reverse("api_list_technicians", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.name
@@ -33,7 +33,7 @@ class Appointment(models.Model):
     technician = models.ForeignKey(Technician, related_name='appointments', on_delete=models.CASCADE)
 
     def get_api_url(self):
-        return reverse("api_list_appointment", kwargs={"pk": self.id})
+        return reverse("api_list_appointments", kwargs={"pk": self.id})
 
     def __str__(self):
         return self.customer_name

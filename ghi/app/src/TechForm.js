@@ -20,8 +20,6 @@ function TechForm () {
             },
         };
         const response = await fetch(techUrl, fetchConfig);
-        console.log("Response status:", response.status);
-        console.log("Response status text:", response.statusText);
         if(response.ok) {
             event.target.reset();
             setTechName("");
