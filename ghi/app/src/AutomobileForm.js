@@ -11,13 +11,27 @@ function AutomobileForm () {
     const [submitted, setSubmitted] = useState(false);
     const[invalid, setInvalid] = useState(false);
 
+    useEffect (() => {
+        const fetchModels = async () => {
+            const url = "http://localhost:8100/api/models/";
+            const response = await fetch(url);
+
+            if (response.ok) {
+                const data = await response.json();
+                setModels(data.models);
+            }
+        };
+        fetchModels();
+    }, []);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        const model_id = selectedModel;
         const data ={
             color:color,
-            year:year,
-            model:selectedModel,
+            year:parseInt(year),
+            model_id,            
             vin:vin,
             sold:sold
         };
@@ -26,18 +40,19 @@ function AutomobileForm () {
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
-            header: {
+            headers: {
                 "Content-Type": "application/json",
             },
         };
         const response = await fetch(automobileUrl, fetchConfig);
+        console.log("RESPONSE:" , response)
         if(response.ok) {
             event.target.reset();
             setColor("");
             setYear("");
+            setSelectedModel("");
             setVin("");
             setSold("");
-            setSelectedModel("");
             setSubmitted(true);
             setInvalid(false);
         }else{
@@ -45,20 +60,6 @@ function AutomobileForm () {
             setInvalid(true);
         }
     };
-
-    useEffect (() => {
-        const fetchModels = async () => {
-            const url = "http://localhost:8100/api/models/";
-            const response = await fetch(url);
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Models data:", data.models);
-                setModels(data.models);
-            }
-        };
-        fetchModels();
-    }, []);
 
     return(
         <div className="row">
